@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date and time</title>
+</head>
+<body>
+    <div id="wrapper"></div>
+    <script>
+
+setInterval(()=>{
+   
+document.querySelector("#wrapper").innerHTML="";
+let clock="";
+const dt =new Date()
+clock +=""+getDayName(dt.getDay());
+clock +=","+dt.getDate();
+clock +="/"+getMonthName(dt.getMonth()+1);
+clock +="/"+dt.getFullYear();
+clock +=", "+dt.getHours();
+clock +=":"+appendZero(dt.getMinutes());
+clock +=":"+appendZero(dt.getSeconds());
+clock +=":"+dt.getMilliseconds();
+
+document.querySelector("#wrapper").innerHTML=clock;
+
+},2000)
+
+function getDayName(number){
+    const days =["Sunday","Monday","Tuesday","Wensday","Thursday","Friday","Saturday"];
+    return days[number];
+}
+
+function getMonthName(number){
+const Month =["jan","feb","mar","apr","may","jun","jul","aug","sept","oct","nov","dec"]
+return Month[number-1]
+}
+function appendZero(number){
+    return(number<10)?"0"+number:number
+}
+
+    </script>
+</body>
+</html>
